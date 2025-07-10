@@ -1,0 +1,16 @@
+<nav id="navbar">
+    <div id="menu-items">
+        {{ if .IsHome }}
+            <a href="#" id="home" onclick="closeMenu();"><b>Pranav Padmanabhan</b></a>
+            <a href="#projects" onclick="closeMenu();">projects</a>
+        {{ else }}
+            <a href="/" id="home" onclick="closeMenu();"><b>Pranav Padmanabhan</b></a>
+            <a href="/#projects" onclick="closeMenu();">projects</a>
+        {{ end }}
+        <a href="/posts/" onclick="closeMenu();">blog</a>
+    </div>
+    <a id="menu-icon" href="javascript:void(0);" onclick="toggleMenu();">
+        <span class="material-symbols-outlined">menu</span>
+    </a>
+</nav>
+<span class="line"></span>

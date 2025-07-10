@@ -1,0 +1,44 @@
+{{ define "main" }}
+
+<section id="landing">
+    <p>
+        {{ .Content }}
+    </p>
+</section>
+
+<section id="projects" class="text list">
+    <h1>Projects</h1>
+    <span class="line"></span>
+    <ul>
+        {{ range where site.RegularPages "Section" "projects"}}
+        <li>
+            <h2><a href="{{ .Params.external_link }}">{{ .LinkTitle }}</a></h2>
+            {{ .Summary }}
+        </li>
+        {{ end }}
+    </ul>
+
+</section>
+
+<section id="recent-posts" class="text list">
+    <h1>Recent Posts</h1>
+    <span class="line"></span>
+    <ul>
+        {{ range where site.RegularPages "Section" "posts"}}
+        <li>
+            <div class="title-date">
+                    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+                    {{ if .CurrentSection.Params.include_date }}
+                        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+                        {{ $dateHuman := .Date | time.Format ":date_long" }}
+                        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+                    {{ end }}
+                </div>
+            {{ .Summary }}
+        </li>
+        {{ end }}
+    </ul>
+
+</section>
+
+{{ end }}

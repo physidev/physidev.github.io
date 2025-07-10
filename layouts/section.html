@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<section class="text list">
+    <h1>{{ .Title }}</h1>
+    <span class="line"></span>
+    {{ .Content }}
+    <ul>
+        {{ range .Pages }}
+            <li>
+                <div class="title-date">
+                    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+                    {{ if .CurrentSection.Params.include_date }}
+                        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+                        {{ $dateHuman := .Date | time.Format ":date_long" }}
+                        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+                    {{ end }}
+                </div>
+                {{ .Summary }}
+            </li>
+        {{ end }}
+    </ul>
+
+</section>
+
+{{ end }}
