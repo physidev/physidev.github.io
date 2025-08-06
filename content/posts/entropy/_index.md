@@ -1,6 +1,6 @@
 +++
 date = '2025-07-19T01:05:08-05:00'
-draft = true
+draft = false
 title = 'What actually is entropy?'
 +++
 
