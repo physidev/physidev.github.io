@@ -1,10 +1,10 @@
 +++
-date = '2025-07-19T01:05:08-05:00'
+date = 2025-07-19T01:05:08-05:00
 draft = false
 title = 'What actually is entropy?'
 +++
 
-Here are (unfinished and disorganized) notes I took to try to understand what on earth entropy---in both physics and information theory---really is.
+Here are (unfinished and disorganized) notes I wrote to try to understand what on earth entropy---in both physics and information theory---really is.
 
 <!--more-->
 
