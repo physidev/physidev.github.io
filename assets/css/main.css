@@ -177,7 +177,7 @@ nav {
 
 nav a {
     padding: 5px 10px;
-    color: white;
+    color: #eee;
     text-decoration: none;
     border-radius: 5px;
 }
@@ -230,7 +230,7 @@ screen and (max-width: 650px) {
     padding: 15px;
 
     width: 100%;
-    max-width: 38rem;
+    max-width: 35rem;
 }
 
 section#landing,
@@ -242,7 +242,7 @@ section.text {
 }
 
 section, section a {
-    color: rgb(241, 241, 241);
+    color: #eee;
 }
 
 section h1 {
@@ -254,7 +254,7 @@ section a {
 }
 
 section a:hover {
-    color: rgb(180, 180, 180);
+    color: rgb(170, 170, 170);
 }
 
 /* LANDING */
@@ -276,7 +276,7 @@ section#landing {
 section.text {
     position: relative;
     background: #353535;
-    color: #ffffff;
+    color: #eeeeee;
     border-radius: 5px;
     display: block;
     hyphens: auto;
