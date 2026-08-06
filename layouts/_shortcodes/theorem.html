@@ -1,0 +1,29 @@
+{{- /*
+Renders a boxed theorem/lemma/definition/etc. environment.
+
+@param {string} [type] The environment label, e.g. "Theorem", "Lemma", "Definition". Defaults to "Theorem".
+@param {string} [name] An optional name for the result, e.g. "Clausius' theorem".
+
+Numbering is off by default. To turn it on for a page, set `numbered_theorems = true`
+in that page's front matter; environments are then numbered per `type` in document order.
+
+@example: {{< theorem type="Lemma" name="Abel's lemma" >}} ... {{< /theorem >}}
+*/}}
+
+{{- $type := .Get "type" | default "Theorem" -}}
+{{- $name := .Get "name" -}}
+{{- $number := "" -}}
+{{- if .Page.Param "numbered_theorems" -}}
+  {{- $counters := .Page.Store.Get "theoremCounters" | default (dict) -}}
+  {{- $prev := index $counters $type | default 0 -}}
+  {{- $current := add $prev 1 -}}
+  {{- $counters = merge $counters (dict $type $current) -}}
+  {{- .Page.Store.Set "theoremCounters" $counters -}}
+  {{- $number = $current -}}
+{{- end -}}
+{{- $label := $type -}}
+{{- with $number }}{{ $label = printf "%s %v" $label . }}{{ end -}}
+{{- with $name }}{{ $label = printf "%s (%s)" $label . }}{{ end -}}
+<div class="theorem-env">
+{{ .Page.RenderString (printf "**%s.** %s" $label .Inner) }}
+</div>

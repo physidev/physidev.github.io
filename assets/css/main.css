@@ -297,6 +297,63 @@ section.text time {
     color: rgb(180, 180, 180);
 }
 
+/* THEOREM / PROOF ENVIRONMENTS */
+
+.theorem-env {
+    background: #26314a;
+    border-left: 4px solid #284586;
+    border-radius: 5px;
+    margin: 1.5em 0;
+    padding: 0.9em 1.2em;
+}
+
+.theorem-env > :first-child {
+    margin-top: 0;
+}
+
+.theorem-env > :last-child {
+    margin-bottom: 0;
+}
+
+.theorem-env:has(+ details.proof-env) {
+    margin-bottom: 0;
+}
+
+details.proof-env {
+    margin: 1.5em 0;
+}
+
+.theorem-env + details.proof-env {
+    margin-top: 0;
+}
+
+details.proof-env summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+    background: #2b2b2b;
+    border-radius: 5px;
+}
+
+details.proof-env[open] summary {
+    border-radius: 5px 5px 0 0;
+}
+
+.proof-body {
+    padding: 0.9em 1.2em;
+    background: #292929;
+    border-radius: 0 0 5px 5px;
+}
+
+.proof-body > :first-child {
+    margin-top: 0;
+}
+
+.qed {
+    display: block;
+    text-align: right;
+}
+
 /* LIST SEGMENTS */
 
 section.text.list .line {
