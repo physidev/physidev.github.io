@@ -1,7 +1,18 @@
 {{ define "main" }}
+<section class="text list">
   <h1>{{ .Title }}</h1>
+  <span class="line"></span>
   {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+  <ul>
+    {{ range .Pages }}
+      <li>
+        <div class="title-date">
+          <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+          {{ $n := len .Pages }}
+          <span class="count">{{ $n }} {{ cond (eq $n 1) "post" "posts" }}</span>
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</section>
 {{ end }}

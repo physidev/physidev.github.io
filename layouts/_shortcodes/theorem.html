@@ -4,6 +4,10 @@ Renders a boxed theorem/lemma/definition/etc. environment.
 @param {string} [type] The environment label, e.g. "Theorem", "Lemma", "Definition". Defaults to "Theorem".
 @param {string} [name] An optional name for the result, e.g. "Clausius' theorem".
 
+The first word of `type` picks the box color: Definition or Algorithm;
+Theorem, Lemma, Proposition, Corollary or Conjecture; Example; anything
+else (Remark, Notation, ...).
+
 Numbering is off by default. To turn it on for a page, set `numbered_theorems = true`
 in that page's front matter; environments are then numbered per `type` in document order.
 
@@ -24,6 +28,13 @@ in that page's front matter; environments are then numbered per `type` in docume
 {{- $label := $type -}}
 {{- with $number }}{{ $label = printf "%s %v" $label . }}{{ end -}}
 {{- with $name }}{{ $label = printf "%s (%s)" $label . }}{{ end -}}
-<div class="theorem-env">
+{{- /* Color group: definitions, claims (theorems and conjectures), examples, everything else. */ -}}
+{{- $word := index (split $type " ") 0 | lower -}}
+{{- $kind := "other" -}}
+{{- if in (slice "definition" "algorithm") $word }}{{ $kind = "definition" -}}
+{{- else if in (slice "theorem" "lemma" "proposition" "corollary" "conjecture") $word }}{{ $kind = "result" -}}
+{{- else if eq $word "example" }}{{ $kind = "example" -}}
+{{- end -}}
+<div class="theorem-env boxed env-{{ $kind }}">
 {{ .Page.RenderString (printf "**%s.** %s" $label .Inner) }}
 </div>

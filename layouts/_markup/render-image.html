@@ -1,0 +1,21 @@
+{{- /*
+Markdown image render hook.
+
+For images in the page bundle, passes the image's aspect ratio (width / height)
+to CSS as --fig-aspect, so the stylesheet can size every figure to the same
+area instead of stretching each one to the full column width. See the
+"Figures" rules in assets/css/main.css.
+*/ -}}
+{{- $res := .Page.Resources.Get .Destination -}}
+{{- $src := .Destination | safeURL -}}
+{{- $style := "" -}}
+{{- with $res -}}
+  {{- $src = .RelPermalink -}}
+  {{- if and (eq .MediaType.MainType "image") (ne .MediaType.SubType "svg") -}}
+    {{- $style = printf "--fig-aspect: %.4f" (div (float .Width) .Height) -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- with $style }} style="{{ . | safeCSS }}"{{ end }}>
+{{- /* trim trailing newline */ -}}

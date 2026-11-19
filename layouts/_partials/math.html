@@ -5,6 +5,12 @@
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
       inlineMath: [['\\(', '\\)']]                  // inline
     },
+    // EB Garamond's x-height (0.405em) and cap height (0.653em) are ~0.95x
+    // Computer Modern's (0.431em / 0.683em), so a fixed 0.95 scale lines both up.
+    chtml: {
+      scale: 0.95,
+      matchFontHeight: false
+    },
     loader:{
       load: ['ui/safe']
     },

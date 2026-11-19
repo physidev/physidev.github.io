@@ -12,7 +12,7 @@
    ========================================================================== */
 
 html {
-    color: #ffffff;
+    color: var(--text);
     font-size: 1.25em;
     line-height: 1.4;
 }
@@ -87,6 +87,107 @@ textarea {
      Author's custom styles
      ========================================================================== */
 
+/* FONTS
+   EB Garamond, self-hosted (static/fonts, SIL Open Font License; see
+   static/fonts/OFL.txt). These are the full fonts from the Google Fonts
+   repository, subset to Latin with every OpenType feature kept, so old-style
+   figures (onum) and true small caps (smcp) work. The copy served by the
+   Google Fonts API does not include old-style figures. */
+
+@font-face {
+    font-family: "EB Garamond";
+    src: url("/fonts/EBGaramond-Roman.woff2") format("woff2");
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "EB Garamond";
+    src: url("/fonts/EBGaramond-Italic.woff2") format("woff2");
+    font-weight: 400 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* THEMES
+   These are the dark colors; data-theme="light" on <html> switches to the
+   light set. The script in head.html sets it from the visitor's saved choice
+   or, failing that, their system light/dark setting. */
+
+:root {
+    color-scheme: dark;
+
+    --page-bg: #222;
+    --card-bg: #353535;
+    --card-shadow: #0006;
+    --text: #eee;
+    --muted: rgb(180, 180, 180);
+    --caption: #ccc;
+    --link-hover: rgb(170, 170, 170);
+    --hover-tint: #0002;
+    --rule: #555;
+
+    --proof-bg: #2e2e2e;
+    --proof-rule: #555;
+    --pill-bg: #2b2b2b;
+    --pill-hover-bg: #26314a;
+
+    --footer-bg: #1c1c1c;
+    --footer-text: #777;
+    --footer-link-hover: #555;
+    --footer-shadow: #000;
+
+    --def-bg: #263a36;     --def-accent: #4a9a88;
+    --result-bg: #2a3248;  --result-accent: #4a6cb8;
+    --example-bg: #3a3226; --example-accent: #b08a45;
+    --other-bg: #292929;   --other-accent: #8c8c8c;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --page-bg: #e9eaec;
+    --card-bg: #fdfdfd;
+    --card-shadow: #0002;
+    --text: #1e1e1e;
+    --muted: #6b6b6b;
+    --caption: #555;
+    --link-hover: #555;
+    --hover-tint: #0001;
+    --rule: #d0d0d0;
+
+    --proof-bg: #f1f2f3;
+    --proof-rule: #bbb;
+    --pill-bg: #ebecee;
+    --pill-hover-bg: #dfe6f4;
+
+    --footer-bg: #dfe0e3;
+    --footer-text: #6b6b6b;
+    --footer-link-hover: #333;
+    --footer-shadow: #0003;
+
+    --def-bg: #e4f1ed;     --def-accent: #3a8a78;
+    --result-bg: #e6ebf6;  --result-accent: #3d5a9e;
+    --example-bg: #f6eedd; --example-accent: #a87a2c;
+    --other-bg: #eeeff0;   --other-accent: #8c8c8c;
+}
+
+/* Theme switch in the footer, styled like the footer's links. */
+#theme-toggle {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline dotted;
+}
+
+#theme-toggle:hover {
+    color: var(--footer-link-hover);
+}
+
 /* MAIN CSS */
 
 * {
@@ -105,8 +206,8 @@ body {
     width: 100%;
     min-height: 100%;
 
-    background: #222;
-    font-family: "Crimson Pro", serif;
+    background: var(--page-bg);
+    font-family: "EB Garamond", serif;
     font-weight: normal;
 
     display: flex;
@@ -177,13 +278,13 @@ nav {
 
 nav a {
     padding: 5px 10px;
-    color: #eee;
+    color: var(--text);
     text-decoration: none;
     border-radius: 5px;
 }
 
 nav a:hover {
-    background: #0002;
+    background: var(--hover-tint);
 }
 
 nav #home {
@@ -238,11 +339,11 @@ section.text {
     margin-top: 20px;
     margin: 0;
     padding: 20px; 
-    box-shadow: 0px 2px 4px #0006;
+    box-shadow: 0px 2px 4px var(--card-shadow);
 }
 
 section, section a {
-    color: #eee;
+    color: var(--text);
 }
 
 section h1 {
@@ -254,7 +355,7 @@ section a {
 }
 
 section a:hover {
-    color: rgb(170, 170, 170);
+    color: var(--link-hover);
 }
 
 /* LANDING */
@@ -266,17 +367,22 @@ section#landing {
     display: block;
     hyphens: auto;
     background: #284586;
-    background: linear-gradient(#01298077, #01216588), /*url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tarantula_Nebula_by_JWST.jpg/960px-Tarantula_Nebula_by_JWST.jpg) */;
+    /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tarantula_Nebula_by_JWST.jpg/960px-Tarantula_Nebula_by_JWST.jpg); */
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+/* The banner is blue in both themes, so its links stay white too. */
+section#landing a {
+    color: inherit;
 }
 
 /* TEXT SEGMENTS */
 
 section.text {
     position: relative;
-    background: #353535;
-    color: #eeeeee;
+    background: var(--card-bg);
+    color: var(--text);
     border-radius: 5px;
     display: block;
     hyphens: auto;
@@ -294,17 +400,163 @@ section.text h2 {
 }
 
 section.text time {
-    color: rgb(180, 180, 180);
+    color: var(--muted);
+}
+
+/* POST BODY RHYTHM
+   Paragraphs are 1em apart. Anything that continues the surrounding text
+   (theorem boxes, display equations, captions) sits closer than that, and
+   headings sit closer to the text they introduce than to the text above. */
+
+section.text.post h2 {
+    font-size: 1.3rem;
+    margin: 1.6em 0 0.5em;
+}
+
+/* Major sections get the same blue rule as the card headings on the home
+   page (see .line and section.text.list .line). */
+section.text.post h2::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: calc(100% + 10px);
+    margin-top: 0.1em;
+    position: relative;
+    left: -10px;
+    background-color: #284586;
+    mask-image: linear-gradient(to right, transparent 0%, black 11px, black calc(100% - 1.5rem), transparent 100%);
+}
+
+section.text.post h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.3em 0 0.3em;
+}
+
+section.text.post :is(h2, h3) + * {
+    margin-top: 0;
+}
+
+/* Display equations: about half a line, as in LaTeX. */
+section.text.post mjx-container[jax="CHTML"][display="true"] {
+    margin: 0.5em 0;
+    /* A too-wide equation scrolls by itself instead of widening the page. */
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+section.text.post p:has(+ mjx-container[display="true"]) {
+    margin-bottom: 0.5em;
+}
+
+section.text.post mjx-container[display="true"] + p {
+    margin-top: 0.5em;
+}
+
+/* Figures: an image with its caption written on the very next line, in
+   the same paragraph, e.g.
+       ![alt](src)
+       **Figure 8.** *The geometric group law, illustrated.*
+   Everything after the image in that paragraph is the caption. The bold
+   "Figure N." label is set in upright small caps (as amsart does) rather
+   than bold, so it stays quieter than the bold environment labels. */
+section.text.post p:has(> img) {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--caption);
+}
+
+section.text.post p > img {
+    display: block;
+    margin: 0 auto;
+}
+
+section.text.post p > img:not(:last-child) {
+    margin-bottom: 0.3em;
+}
+
+section.text.post p:has(> img) > strong {
+    font-weight: normal;
+    font-variant: small-caps;
+    /* Old-style figures sit at small-cap height instead of towering over it. */
+    font-variant-numeric: oldstyle-nums;
+    letter-spacing: 0.03em;
+}
+
+/* Equal-area figures. Every bundle image gets the same area, that of a
+   --fig-size square, but never more than the column width. So a 3:1 strip
+   still spans the column, while a square plot is 21rem (about 2/3 of the
+   desktop column) instead of taking a whole screen. On narrow screens, where
+   the column is smaller than that, figures just fill it.
+   --fig-aspect (width / height) comes from the image render hook.
+   Browsers without CSS sqrt() fall back to full column width. */
+:root {
+    --fig-size: 21rem;
+}
+
+section.text.post img[style*="--fig-aspect"] {
+    width: min(100%, calc(var(--fig-size) * sqrt(var(--fig-aspect))));
 }
 
 /* THEOREM / PROOF ENVIRONMENTS */
 
 .theorem-env {
-    background: #26314a;
-    border-left: 4px solid #284586;
-    border-radius: 5px;
-    margin: 1.5em 0;
-    padding: 0.9em 1.2em;
+    margin: 1em 0;
+}
+
+/* Boxed environments are demarcated only lightly: a tinted background and a
+   thin rule, with the contents indented and under half a line of
+   vertical padding. */
+:root {
+    --env-indent: 1em;
+    --env-rule: 2px;
+}
+
+.theorem-env.boxed,
+details.proof-env {
+    margin: 0.6em 0;
+    border-left: var(--env-rule) solid;
+    border-radius: 0 4px 4px 0;
+}
+
+.theorem-env.boxed {
+    background: var(--env-bg);
+    border-left-color: var(--env-accent);
+    padding: 0.35em var(--env-indent);
+}
+
+/* One hue per kind of environment, all at a similar, low lightness so
+   none shouts louder than the others. */
+.env-definition { --env-bg: var(--def-bg);     --env-accent: var(--def-accent); }      /* teal */
+.env-result     { --env-bg: var(--result-bg);  --env-accent: var(--result-accent); }   /* blue */
+.env-example    { --env-bg: var(--example-bg); --env-accent: var(--example-accent); }  /* amber */
+.env-other      { --env-bg: var(--other-bg);   --env-accent: var(--other-accent); }    /* grey */
+
+details.proof-env {
+    background: var(--proof-bg);
+    border-left-color: var(--proof-rule);
+}
+
+/* Boxes and proofs continue the surrounding text, so they sit closer to
+   it than a paragraph break would. */
+p:has(+ :is(.theorem-env.boxed, details.proof-env)) {
+    margin-bottom: 0.6em;
+}
+
+:is(.theorem-env.boxed, details.proof-env) + p {
+    margin-top: 0.6em;
+}
+
+.theorem-env ul {
+    list-style: none;
+    padding-left: 1.2em;
+    margin: 0.4em 0;
+}
+
+/* Hanging indent so wrapped lines align after the "(a)" label. */
+.theorem-env ul li {
+    padding-left: 1.5em;
+    text-indent: -1.5em;
 }
 
 .theorem-env > :first-child {
@@ -315,43 +567,69 @@ section.text time {
     margin-bottom: 0;
 }
 
-.theorem-env:has(+ details.proof-env) {
+/* A proof directly under its result joins the same block. */
+.theorem-env.boxed:has(+ details.proof-env) {
     margin-bottom: 0;
+    border-radius: 0 4px 0 0;
 }
 
-details.proof-env {
-    margin: 1.5em 0;
-}
-
-.theorem-env + details.proof-env {
+.theorem-env.boxed + details.proof-env {
     margin-top: 0;
+    border-radius: 0 0 4px 0;
 }
 
+/* The disclosure triangle hangs in the indent so "Proof" lines up with the proof text. */
 details.proof-env summary {
+    position: relative;
+    list-style: none;
     cursor: pointer;
     font-weight: 600;
-    padding: 0.5em 0.8em;
-    background: #2b2b2b;
-    border-radius: 5px;
+    padding: 0.2em var(--env-indent);
 }
 
-details.proof-env[open] summary {
-    border-radius: 5px 5px 0 0;
+details.proof-env summary::-webkit-details-marker {
+    display: none;
+}
+
+details.proof-env summary::before {
+    content: "\25B8";
+    position: absolute;
+    left: 0.35em;
+    font-size: 0.75em;
+    line-height: calc(1.4em / 0.75);
+    color: var(--muted);
+}
+
+details.proof-env[open] summary::before {
+    content: "\25BE";
 }
 
 .proof-body {
-    padding: 0.9em 1.2em;
-    background: #292929;
-    border-radius: 0 0 5px 5px;
+    padding: 0 var(--env-indent) 0.35em;
 }
 
 .proof-body > :first-child {
     margin-top: 0;
 }
 
-.qed {
-    display: block;
-    text-align: right;
+.proof-body > :last-child {
+    margin-bottom: 0;
+}
+
+/* End-of-proof mark: an open square, flush right on the last line of the
+   proof (or on its own line if that line is full), as in amsthm. */
+.proof-body > :last-child::after {
+    content: "";
+    float: right;
+    box-sizing: border-box;
+    /* amsthm's \openbox: 0.6em wide, 0.675em tall, resting on the baseline. */
+    width: 0.6em;
+    height: 0.675em;
+    margin-left: 1em;
+    /* A float's top sits at the top of the line box; with line-height 1.4
+       the EB Garamond baseline is 1.05em down, so drop by 1.05em - height. */
+    margin-top: calc(1.05em - 0.675em);
+    border: 1px solid currentColor;
 }
 
 /* LIST SEGMENTS */
@@ -376,6 +654,59 @@ section.text.list ul li p {
     margin-top: 5px;
 }
 
+/* Item spacing lives on the items, so entries without a summary
+   are spaced like the rest. */
+section.text.list ul li + li {
+    margin-top: 1em;
+}
+
+section.text.list ul li > :last-child {
+    margin-bottom: 0;
+}
+
+section.text.list .count {
+    color: var(--muted);
+}
+
+/* TAGS (end of post) */
+
+.terms {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5em;
+    margin-top: 2em;
+    padding-top: 0.8em;
+    border-top: 1px solid var(--rule);
+}
+
+.terms-label {
+    color: var(--muted);
+}
+
+.terms ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+section.text .terms a {
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 0.1em 0.7em;
+    border-radius: 999px;
+    background: var(--pill-bg);
+    text-decoration: none;
+}
+
+section.text .terms a:hover {
+    background: var(--pill-hover-bg);
+    color: var(--text);
+}
+
 section.text.list .title-date {
     display: flex;
     justify-content: space-between;
@@ -389,26 +720,46 @@ footer {
     width: 100%;
     bottom: 0;
     flex-shrink: 0;
-    background: #1c1c1c;
-    color: #777;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     font-size: 0.75rem;
     padding: 10px 40px;
-    float: left;
 
-    box-shadow: inset 0 2px 4px -2px #000;
+    /* Version on the left, copyright in the middle, theme switch on the right.
+       The two 1fr columns are equal, so the middle one is exactly centered. */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    gap: 1em;
+
+    box-shadow: inset 0 2px 4px -2px var(--footer-shadow);
 }
 
 footer a {
-    color: #777;
+    color: var(--footer-text);
     text-decoration: underline dotted;
 }
 
 footer a:hover {
-    color: #555;
+    color: var(--footer-link-hover);
 }
 
-footer version {
-    float: right;
+footer > * {
+    white-space: nowrap;
+}
+
+.footer-copyright {
+    text-align: center;
+}
+
+.footer-theme {
+    text-align: right;
+}
+
+@media screen and (max-width: 480px) {
+    footer {
+        padding: 10px 16px;
+    }
 }
 
 /* ==========================================================================

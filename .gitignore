@@ -3,3 +3,5 @@ resources/
 *.draft.md
 *.draft/
 *.bat
+# local dev-server config for the Claude app preview
+.claude/launch.json

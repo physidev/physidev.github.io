@@ -31,7 +31,7 @@ Requires Hugo extended (CI pins `HUGO_VERSION: 0.148.0`, `hugo.toml` sets a mini
 
 **Math rendering:** Set `math = true` in a page's front matter to load MathJax. Inline math uses `\( ... \)`, block math uses `\[ ... \]` or `$$ ... $$` — this passthrough delimiter config lives in `hugo.toml` under `markup.goldmark.extensions.passthrough` and must stay consistent with `layouts/_partials/math.html`'s MathJax config.
 
-**Assets/CSS/JS:** `assets/css/main.css` is a single stylesheet (H5BP reset + custom styles) processed through Hugo Pipes (`resources.Get` → minify + fingerprint in production, unminified with sourcemaps in dev via `hugo.IsDevelopment`). Same pattern for `assets/js` via `js.Build` in `head/js.html`. `static/js/main.js` (plain, not pipelined) provides mobile nav toggle behavior (`toggleMenu`/`closeMenu`) referenced directly in `head.html`.
+**Assets/CSS/JS:** `assets/css/main.css` is a single stylesheet (H5BP reset + custom styles) processed through Hugo Pipes (`resources.Get` → minify + fingerprint in production, unminified with sourcemaps in dev via `hugo.IsDevelopment`). `head/js.html` holds an unused `js.Build` pipeline for the same file; do not include it, since `js.Build` wraps the script and hides its global functions. `assets/js/main.js` (plain script, minified + fingerprinted but not run through `js.Build`, so its functions stay global for `onclick` handlers; loaded in `head.html`) provides the mobile nav toggle (`toggleMenu`/`closeMenu`) and the footer light/dark switch (`toggleTheme`).
 
 **Deployment:** `.github/workflows/hugo.yaml` builds with Hugo and deploys `public/` to GitHub Pages on every push to `main`. There is no separate staging environment or PR preview.
 

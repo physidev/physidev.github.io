@@ -1,6 +1,7 @@
 {{- /*
 Renders a collapsible proof block (closed by default), typically placed
-right after a `theorem` shortcode.
+right after a `theorem` shortcode. The end-of-proof square is drawn by CSS
+(`.proof-body > :last-child::after`) so it lands on the proof's last line.
 
 @param {string} [title] Override for the summary label. Defaults to "Proof".
 
@@ -11,7 +12,6 @@ right after a `theorem` shortcode.
 <details class="proof-env">
   <summary>{{ $title }}</summary>
   <div class="proof-body">
-    {{ .Page.RenderString .Inner }}
-    <span class="qed">&#8718;</span>
+    {{ .Page.RenderString (dict "display" "block") .Inner }}
   </div>
 </details>

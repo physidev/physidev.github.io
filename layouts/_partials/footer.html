@@ -1,5 +1,9 @@
-<b>physidev</b> © {{ now.Year }}. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+<span class="footer-version">v{{ site.Param "version" }}</span>
 
-<version>
-    v{{ site.Param "version"}}
-</version>
+<span class="footer-copyright">
+    <b>physidev</b> © {{ now.Year }}. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+</span>
+
+<span class="footer-theme">
+    <button id="theme-toggle" type="button" onclick="toggleTheme()" hidden>Light mode</button>
+</span>
