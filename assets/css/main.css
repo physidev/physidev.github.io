@@ -166,6 +166,7 @@ textarea {
     --fig-blue: #6ea8e6;
     --fig-green: #72c38c;
     --fig-orange: #eea65a;
+    --fig-purple: #b894ec;
     --fig-fill: #6ea8e633;
 }
 
@@ -209,6 +210,7 @@ textarea {
     --fig-blue: #2f6db0;
     --fig-green: #2e8a4a;
     --fig-orange: #c97314;
+    --fig-purple: #7b4cc0;
     --fig-fill: #2f6db026;
 }
 
@@ -624,18 +626,35 @@ svg.fig text.red    { fill: var(--fig-red); stroke: none; }
 svg.fig text.blue   { fill: var(--fig-blue); stroke: none; }
 svg.fig text.green  { fill: var(--fig-green); stroke: none; }
 svg.fig .region { fill: var(--fig-fill); stroke: none; }
+svg.fig .sphere      { fill: none; stroke: var(--fig-axis); stroke-width: 1.6; }
+svg.fig .back        { opacity: 0.3; }
+svg.fig .back-line   { stroke-dasharray: 3 4; opacity: 0.6; }
+/* Figure 4: the chart plane and its region on the chart (same blue), and the cone sheet. */
+svg.fig .chart-plane { fill: var(--fig-blue); fill-opacity: 0.2; stroke: var(--fig-blue); stroke-width: 1.2; stroke-opacity: 0.6; }
+svg.fig .purple      { stroke: var(--fig-purple); }
+svg.fig .chart-patch { fill: var(--fig-blue); fill-opacity: 0.2; stroke: var(--fig-blue); stroke-width: 1; stroke-opacity: 0.5; }
+svg.fig .plane-grid  { stroke: var(--fig-blue); stroke-width: 0.8; stroke-opacity: 0.35; }
+svg.fig .sheet       { fill: var(--fig-red); fill-opacity: 0.12; stroke: none; }
+/* Equations typeset by MathJax inside a figure (Figure 4's chart labels). */
+svg.fig .fig-eq      { color: var(--fig-purple); font-size: 18px; line-height: 36px; white-space: nowrap; text-align: left; }
+svg.fig foreignObject { transition: opacity 0.3s; }
+svg.fig .fig-eq-ink    { color: var(--fig-ink); }
+svg.fig .fig-eq-center { text-align: center; line-height: 30px; }
+
+svg.fig .on-plane    { stroke-width: 2; }
 
 /* Interactive figures: an SVG slider (track, filled part, knob). */
 svg.fig .fig-track      { fill: var(--fig-grid); stroke: none; }
 svg.fig .fig-track-fill { fill: var(--fig-axis); stroke: none; }
-svg.fig .fig-knob       { fill: var(--env-bg, var(--card-bg)); stroke: var(--fig-ink); stroke-width: 2; }  /* box colour inside a box */
+svg.fig .fig-knob       { fill: var(--env-bg, var(--card-bg)); stroke: var(--fig-muted); stroke-width: 2; }  /* box colour inside a box */
 svg.fig .fig-knob:focus-visible { outline: none; stroke: var(--fig-blue); stroke-width: 3; }
 svg.fig .fig-btn-bg     { fill: var(--env-bg, var(--card-bg)); stroke: var(--fig-axis); stroke-width: 1.5; }
-svg.fig .fig-btn-icon   { fill: var(--fig-ink); stroke: var(--fig-ink); stroke-width: 3; stroke-linejoin: round; }
-svg.fig .fig-btn:hover .fig-btn-bg { stroke: var(--fig-ink); }
+svg.fig .fig-btn-icon   { fill: var(--fig-muted); stroke: var(--fig-muted); stroke-width: 3; stroke-linejoin: round; }
+svg.fig .fig-btn:hover .fig-btn-bg { stroke: var(--fig-muted); }
+/* Controls stay quieter than the caption text: muted grey, never the full text colour. */
 svg.fig :is(.fig-btn, .fig-knob):focus { outline: none; }  /* keyboard focus is shown by the stroke rules */
 svg.fig .fig-btn:focus-visible .fig-btn-bg { stroke: var(--fig-blue); stroke-width: 3; }
-svg.fig [class*="fig3-"] { touch-action: none; }
+svg.fig :is([class*="fig3-"], [class*="fig4-"]) { touch-action: none; }
 
 /* THEOREM / PROOF ENVIRONMENTS */
 

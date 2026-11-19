@@ -21,6 +21,10 @@ area instead of stretching each one to the full column width. See the
     {{- $vb := index . 0 -}}
     {{- $aspect = printf "--fig-aspect: %.4f" (div (float (index $vb 1)) (float (index $vb 2))) -}}
   {{- end -}}
+  {{- /* A figure may override the equal-area size with data-fig-size="…" on its root. */ -}}
+  {{- with findRESubmatch `^<svg\b[^>]*\bdata-fig-size="([^"]+)"` $svg 1 -}}
+    {{- $aspect = printf "%s; --fig-size: %s" $aspect (index (index . 0) 1) -}}
+  {{- end -}}
   {{- $attrs := printf `<svg class="fig" role="img" aria-label="%s" style="%s"` (.PlainText | htmlEscape) $aspect -}}
   {{- replaceRE `^<svg\b` $attrs $svg 1 | safeHTML -}}
 {{- else -}}

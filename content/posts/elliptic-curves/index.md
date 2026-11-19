@@ -137,7 +137,7 @@ and setting \(y = 1\) returns an equation identical in form to the second one. T
 
 We call \(C\) the *projectivization* of \(C_1\) and \(C_2\). This construction is what allows us to talk about projective varieties defined by polynomial equations that are a priori not homogeneous.
 
-![Illustration of projective space](projective-space.png)
+![The curve C on the unit sphere, and its affine chart as the chart plane turns from z = 1 to y = 1](projective-space.svg)
 **Figure 4.** *Illustration of projective space.*
 
 Fundamentally, the takeaway is that projective space is the natural setting for questions about algebraic curves, surfaces, and varieties.
@@ -146,7 +146,7 @@ Fundamentally, the takeaway is that projective space is the natural setting for 
 
 To understand the definition of elliptic curves, we also need to talk about what "smooth" and "curve" mean. Luckily, these have more intuitive interpretations we can borrow from other fields of mathematics.
 
-![The varieties V1, V2, and V3](dimension-varieties.png)
+![The varieties V1, V2, and V3](dimension-varieties.svg)
 **Figure 5.** *The varieties \(V_1\), \(V_2\), and \(V_3\).*
 
 To begin, let us discuss the terms "curve" and "surface". Consider the following three varieties:
@@ -169,11 +169,11 @@ Let \(V\) be a variety. The *dimension* of \(V\), written \(\dim V\), is the lar
 Varieties with dimension one and two are called *curves* and *surfaces* respectively.
 {{< /theorem >}}
 
-Note that because single points are themselves varieties, the only proper subvarieties of curves are points, a fact demonstrated with \(V_2\) in Figure 6.
+Note that because single points are themselves varieties, the only proper subvarieties of curves are points, a fact demonstrated with \(V_3\) in Figure 6.
 
 For the rest of this article, we narrow our lens of study to just curves; fortunately, this is a small limitation since our main objects of study are elliptic curves.
 
-![The varieties V1, V2, and V3 with chains of proper subvarieties](subvariety-chains.png)
+![The varieties V1, V2, and V3 with chains of proper subvarieties](subvariety-chains.svg)
 **Figure 6.** *The varieties \(V_1\), \(V_2\), and \(V_3\) again, but chains of proper subvarieties included. Note that \(V_3\) only has points for subvarieties.*
 
 This leaves us with smoothness. Intuitively, the more you zoom in on an algebraic curve, the more it should resemble a straight line. Of course, this may not be true at all points. Consider the curves \(C_1, C_2\) given by the equations
