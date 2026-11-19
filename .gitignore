@@ -5,3 +5,6 @@ resources/
 *.bat
 # local dev-server config for the Claude app preview
 .claude/launch.json
+
+# generated files from local tools/agents (not part of the site)
+output/

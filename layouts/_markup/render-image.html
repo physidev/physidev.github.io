@@ -1,21 +1,39 @@
 {{- /*
 Markdown image render hook.
 
-For images in the page bundle, passes the image's aspect ratio (width / height)
-to CSS as --fig-aspect, so the stylesheet can size every figure to the same
+- SVG files in the page bundle are inlined into the page (not loaded with
+  <img>), so their elements can use the site's CSS: figure colors come from
+  the --fig-* variables in assets/css/main.css and follow the light/dark theme.
+  The SVG gets class "fig", an accessible label from the alt text, and its
+  aspect ratio (from the viewBox) as --fig-aspect.
+- Other images in the page bundle pass their aspect ratio (width / height) to
+  CSS as --fig-aspect.
+
+Either way, --fig-aspect lets the stylesheet size every figure to the same
 area instead of stretching each one to the full column width. See the
 "Figures" rules in assets/css/main.css.
 */ -}}
 {{- $res := .Page.Resources.Get .Destination -}}
-{{- $src := .Destination | safeURL -}}
-{{- $style := "" -}}
-{{- with $res -}}
-  {{- $src = .RelPermalink -}}
-  {{- if and (eq .MediaType.MainType "image") (ne .MediaType.SubType "svg") -}}
-    {{- $style = printf "--fig-aspect: %.4f" (div (float .Width) .Height) -}}
+{{- if and $res (eq $res.MediaType.SubType "svg") -}}
+  {{- $svg := $res.Content | replaceRE `(?s)^.*?(<svg\b)` "$1" -}}
+  {{- $aspect := "" -}}
+  {{- with findRESubmatch `viewBox="\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)\s*"` $svg 1 -}}
+    {{- $vb := index . 0 -}}
+    {{- $aspect = printf "--fig-aspect: %.4f" (div (float (index $vb 1)) (float (index $vb 2))) -}}
   {{- end -}}
+  {{- $attrs := printf `<svg class="fig" role="img" aria-label="%s" style="%s"` (.PlainText | htmlEscape) $aspect -}}
+  {{- replaceRE `^<svg\b` $attrs $svg 1 | safeHTML -}}
+{{- else -}}
+  {{- $src := .Destination | safeURL -}}
+  {{- $style := "" -}}
+  {{- with $res -}}
+    {{- $src = .RelPermalink -}}
+    {{- if eq .MediaType.MainType "image" -}}
+      {{- $style = printf "--fig-aspect: %.4f" (div (float .Width) .Height) -}}
+    {{- end -}}
+  {{- end -}}
+  <img src="{{ $src }}" alt="{{ .PlainText }}"
+    {{- with .Title }} title="{{ . }}"{{ end }}
+    {{- with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end -}}
-<img src="{{ $src }}" alt="{{ .PlainText }}"
-  {{- with .Title }} title="{{ . }}"{{ end }}
-  {{- with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- /* trim trailing newline */ -}}

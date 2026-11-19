@@ -15,12 +15,12 @@ Mathematicians and computer scientists have likely encountered the topic of elli
 An easily digestible definition of elliptic curves is the following:
 
 {{< theorem type="Definition 0.1" >}}
-Let \(K\) be a field with characteristic not equal to 2 or 3 (i.e. \(2 \neq 0\) and \(3 \neq 0\)). An *elliptic curve* is a set of solutions \((x, y)\) to an equation
+Let \(K\) be a field with characteristic not equal to 2 or 3 (i.e. \(2 \neq 0\) and \(3 \neq 0\)). An *elliptic curve* is the set of solutions \((x, y)\) to an equation
 \[ y^2 = x^3 + ax + b, \]
 with coefficients \(a, b \in K\) satisfying \(4a^3 + 27b^2 \neq 0\).
 {{< /theorem >}}
 
-![An elliptic curve](elliptic-curve.png)
+![An elliptic curve](elliptic-curve.svg)
 **Figure 1.** *An elliptic curve.*
 
 It is quite easy to state, but this definition seems completely random, with absolutely no insight into what makes these objects special and worth our study. This paper is devoted to answering this question: *why are elliptic curves special?*
@@ -58,7 +58,7 @@ An affine algebraic set \(V\) is called an *affine variety* if the ideal \(I(V)\
 Necessarily, \(K[V]\) is an integral domain.
 {{< /theorem >}}
 
-![An affine algebraic set, an affine variety, and rational points on an affine variety](affine-varieties.png)
+![An affine algebraic set, an affine variety, and rational points on an affine variety](affine-varieties.svg)
 **Figure 2.** *Left to right: An affine algebraic set, an affine variety, and \(\mathbb{Q}\)-rational points on an affine variety.*
 
 We often want to study the points of varieties whose coordinates fall into a specified subfield \(L \subseteq K\). Such points are called *\(L\)-rational*, and the set of \(L\)-rational points in the variety \(V\) is denoted \(V(L)\).
@@ -80,8 +80,8 @@ Somehow, the results are much simpler and cleaner! The key intuition behind proj
 {{< theorem type="Example 1.4" >}}
 Let us look closer at parallel lines. Suppose you have two lines in \(\mathbb{R}^2\), one through \((0, 1)\) and \((1, 1)\), and one through \((1, 0)\) and \((1, 1)\). These lines intersect at \((1, 1)\).
 
-![Two lines whose intersection is dragged to infinity](parallel-lines.png)
-**Figure 3.** *As we drag the intersection (black point) to infinity, the lines become parallel.*
+![Two lines whose intersection is dragged to infinity; a slider moves the intersection](parallel-lines.svg)
+**Figure 3.** *As we drag the intersection to infinity, the lines become parallel. Use the slider to move it.*
 
 If we 'fix' the lines at \((0, 1)\) and \((1, 0)\) and 'drag' their intersection point progressively away from the origin, the lines become more and more parallel. See Figure 3. If we take the limit of this process—whatever that may mean—the lines actually become parallel, and we could make an argument that they intersect infinitely far from the origin.
 {{< /theorem >}}

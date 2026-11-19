@@ -118,34 +118,63 @@ textarea {
 :root {
     color-scheme: dark;
 
-    --page-bg: #222;
-    --card-bg: #353535;
-    --card-shadow: #0006;
+    /* Light text on a dark background renders thinner (especially on macOS),
+       which EB Garamond's fine hairlines exaggerate. The font is variable, so
+       dark mode sets body text a touch heavier to compensate. */
+    --text-weight: 440;
+    /* Bold and headings scale with it, keeping light mode's ratios
+       (700/400 = 1.75, 600/400 = 1.5), since light-on-dark glow already
+       makes weight differences harder to see. */
+    --bold-weight: 770;
+    --heading-weight: 660;
+
+    --page-bg: #1d1d1d;    /* L* 11 */
+    --card-bg: #2b2b2b;    /* L* 17.5; text on card ~12:1 */
+    --card-shadow: #0008;
     --text: #eee;
     --muted: rgb(180, 180, 180);
     --caption: #ccc;
     --link-hover: rgb(170, 170, 170);
-    --hover-tint: #0002;
+    --hover-tint: #ffffff10;
     --rule: #555;
 
-    --proof-bg: #2e2e2e;
-    --proof-rule: #555;
-    --pill-bg: #2b2b2b;
-    --pill-hover-bg: #26314a;
+    --proof-bg: #323232;   /* L* 21, a smaller step than the boxes, as in light mode */
+    --proof-rule: #5e5e5e;
+    --pill-bg: #3e3e3e;
+    --pill-hover-bg: #404754;
 
-    --footer-bg: #1c1c1c;
+    --footer-bg: #181818;
     --footer-text: #777;
-    --footer-link-hover: #555;
+    --footer-link-hover: #999;
     --footer-shadow: #000;
 
-    --def-bg: #263a36;     --def-accent: #4a9a88;
-    --result-bg: #2a3248;  --result-accent: #4a6cb8;
-    --example-bg: #3a3226; --example-accent: #b08a45;
-    --other-bg: #292929;   --other-accent: #8c8c8c;
+    /* Every box sits the same step (~5.5 L*) above the card, mirroring light
+       mode, where boxes sit ~5 L* below it: in both themes a box is the card
+       nudged toward the text color, plus a hue. */
+    --def-bg: #243b38;     --def-accent: #4a9a88;
+    --result-bg: #303746;  --result-accent: #4a6cb8;
+    --example-bg: #403529; --example-accent: #b08a45;
+    --other-bg: #373737;   --other-accent: #8c8c8c;
+
+    /* Figure palette (inline SVG figures). */
+    --fig-ink: #e6e6e6;
+    --fig-muted: #9a9a9a;
+    --fig-axis: #7a7a7a;
+    /* Translucent, so gridlines show equally on the card and inside boxes. */
+    --fig-grid: rgb(255 255 255 / 0.11);
+    --fig-red: #f07b6a;
+    --fig-blue: #6ea8e6;
+    --fig-green: #72c38c;
+    --fig-orange: #eea65a;
+    --fig-fill: #6ea8e633;
 }
 
 :root[data-theme="light"] {
     color-scheme: light;
+
+    --text-weight: 400;
+    --bold-weight: 700;
+    --heading-weight: 600;
 
     --page-bg: #e9eaec;
     --card-bg: #fdfdfd;
@@ -171,6 +200,16 @@ textarea {
     --result-bg: #e6ebf6;  --result-accent: #3d5a9e;
     --example-bg: #f6eedd; --example-accent: #a87a2c;
     --other-bg: #eeeff0;   --other-accent: #8c8c8c;
+
+    --fig-ink: #1e1e1e;
+    --fig-muted: #6b6b6b;
+    --fig-axis: #8a8a8a;
+    --fig-grid: rgb(0 0 0 / 0.09);
+    --fig-red: #c8402c;
+    --fig-blue: #2f6db0;
+    --fig-green: #2e8a4a;
+    --fig-orange: #c97314;
+    --fig-fill: #2f6db026;
 }
 
 /* Theme switch in the footer, styled like the footer's links. */
@@ -208,7 +247,7 @@ body {
 
     background: var(--page-bg);
     font-family: "EB Garamond", serif;
-    font-weight: normal;
+    font-weight: var(--text-weight);
 
     display: flex;
     flex-direction: column;
@@ -218,8 +257,12 @@ body {
 b,
 h1,
 h2 {
-    font-weight: 600;
+    font-weight: var(--heading-weight);
     margin: 0;
+}
+
+strong {
+    font-weight: var(--bold-weight);
 }
 
 img {
@@ -420,7 +463,9 @@ section.text.post h2::after {
     display: block;
     height: 4px;
     width: calc(100% + 10px);
-    margin-top: 0.1em;
+    /* The line box ends ~0.36em below the baseline; pull the rule up so it
+       sits just clear of descenders (g, y, p reach ~0.27em). */
+    margin-top: -0.04em;
     position: relative;
     left: -10px;
     background-color: #284586;
@@ -429,12 +474,51 @@ section.text.post h2::after {
 
 section.text.post h3 {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--heading-weight);
     margin: 1.3em 0 0.3em;
 }
 
 section.text.post :is(h2, h3) + * {
     margin-top: 0;
+}
+
+/* Lists belong to the paragraph that introduces them, so they sit much
+   closer to it than a paragraph break would (inside boxes too). */
+section.text.post p:has(+ :is(ol, ul)) {
+    margin-bottom: 0.4em;
+}
+
+section.text.post :is(ol, ul) {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+section.text.post :is(ol, ul) + p {
+    margin-top: 0.4em;
+}
+
+/* ...but not the tag row at the end of a post. */
+section.text.post .terms ul {
+    margin: 0;
+}
+
+/* References: bracketed, right-aligned labels as in the PDF ("[1]"). */
+section.text.post h2#references + ol {
+    list-style: none;
+    counter-reset: ref;
+    padding-left: 2.6em;
+}
+
+section.text.post h2#references + ol > li {
+    counter-increment: ref;
+    position: relative;
+}
+
+section.text.post h2#references + ol > li::before {
+    content: "[" counter(ref) "]";
+    position: absolute;
+    right: calc(100% + 0.6em);
+    text-align: right;
 }
 
 /* Display equations: about half a line, as in LaTeX. */
@@ -460,23 +544,23 @@ section.text.post mjx-container[display="true"] + p {
    Everything after the image in that paragraph is the caption. The bold
    "Figure N." label is set in upright small caps (as amsart does) rather
    than bold, so it stays quieter than the bold environment labels. */
-section.text.post p:has(> img) {
+section.text.post p:has(> :is(img, svg.fig)) {
     text-align: center;
     font-size: 0.9em;
     color: var(--caption);
 }
 
-section.text.post p > img {
+section.text.post p > :is(img, svg.fig) {
     display: block;
     margin: 0 auto;
 }
 
-section.text.post p > img:not(:last-child) {
+section.text.post p > :is(img, svg.fig):not(:last-child) {
     margin-bottom: 0.3em;
 }
 
-section.text.post p:has(> img) > strong {
-    font-weight: normal;
+section.text.post p:has(> :is(img, svg.fig)) > strong {
+    font-weight: var(--text-weight);
     font-variant: small-caps;
     /* Old-style figures sit at small-cap height instead of towering over it. */
     font-variant-numeric: oldstyle-nums;
@@ -494,9 +578,64 @@ section.text.post p:has(> img) > strong {
     --fig-size: 21rem;
 }
 
-section.text.post img[style*="--fig-aspect"] {
+section.text.post :is(img, svg.fig)[style*="--fig-aspect"] {
     width: min(100%, calc(var(--fig-size) * sqrt(var(--fig-aspect))));
 }
+
+/* Inline SVG figures (see the image render hook). They have no background
+   and draw with these classes, so they follow the light/dark theme. */
+svg.fig {
+    height: auto;
+    overflow: visible;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+svg.fig * {
+    vector-effect: non-scaling-stroke;
+}
+
+/* Figure labels are part of the drawing; don't let drags select them. */
+svg.fig text {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+svg.fig .grid   { stroke: var(--fig-grid); stroke-width: 1; fill: none; }
+svg.fig .axis   { stroke: var(--fig-axis); stroke-width: 1.6; fill: none; }
+svg.fig .axis-head { fill: var(--fig-axis); stroke: none; }
+svg.fig .tick   { fill: var(--fig-muted); font-size: 15px; }
+svg.fig .label  { fill: var(--fig-ink); }
+svg.fig .math   { fill: var(--fig-ink); font-style: italic; }
+svg.fig .curve  { fill: none; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+svg.fig .line   { fill: none; stroke-width: 2.4; stroke-linecap: round; }
+svg.fig .dot    { stroke: none; }
+svg.fig .red    { stroke: var(--fig-red); }
+svg.fig .blue   { stroke: var(--fig-blue); }
+svg.fig .green  { stroke: var(--fig-green); }
+svg.fig .orange { stroke: var(--fig-orange); }
+svg.fig .ink    { stroke: var(--fig-ink); }
+svg.fig .dot.red    { fill: var(--fig-red); }
+svg.fig .dot.blue   { fill: var(--fig-blue); }
+svg.fig .dot.green  { fill: var(--fig-green); }
+svg.fig .dot.orange { fill: var(--fig-orange); }
+svg.fig .dot.ink    { fill: var(--fig-ink); }
+svg.fig text.red    { fill: var(--fig-red); stroke: none; }
+svg.fig text.blue   { fill: var(--fig-blue); stroke: none; }
+svg.fig text.green  { fill: var(--fig-green); stroke: none; }
+svg.fig .region { fill: var(--fig-fill); stroke: none; }
+
+/* Interactive figures: an SVG slider (track, filled part, knob). */
+svg.fig .fig-track      { fill: var(--fig-grid); stroke: none; }
+svg.fig .fig-track-fill { fill: var(--fig-axis); stroke: none; }
+svg.fig .fig-knob       { fill: var(--env-bg, var(--card-bg)); stroke: var(--fig-ink); stroke-width: 2; }  /* box colour inside a box */
+svg.fig .fig-knob:focus-visible { outline: none; stroke: var(--fig-blue); stroke-width: 3; }
+svg.fig .fig-btn-bg     { fill: var(--env-bg, var(--card-bg)); stroke: var(--fig-axis); stroke-width: 1.5; }
+svg.fig .fig-btn-icon   { fill: var(--fig-ink); stroke: var(--fig-ink); stroke-width: 3; stroke-linejoin: round; }
+svg.fig .fig-btn:hover .fig-btn-bg { stroke: var(--fig-ink); }
+svg.fig :is(.fig-btn, .fig-knob):focus { outline: none; }  /* keyboard focus is shown by the stroke rules */
+svg.fig .fig-btn:focus-visible .fig-btn-bg { stroke: var(--fig-blue); stroke-width: 3; }
+svg.fig [class*="fig3-"] { touch-action: none; }
 
 /* THEOREM / PROOF ENVIRONMENTS */
 
@@ -583,7 +722,7 @@ details.proof-env summary {
     position: relative;
     list-style: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: var(--heading-weight);
     padding: 0.2em var(--env-indent);
 }
 
@@ -635,6 +774,9 @@ details.proof-env[open] summary::before {
 /* LIST SEGMENTS */
 
 section.text.list .line {
+    /* Same rule-to-baseline distance as post section headings (~0.32em of
+       the 1.45rem card heading), just clear of descenders. */
+    margin-top: calc(-0.05 * 1.45rem);
     width: calc(100% + 10px);
     position: relative;
     left: -10px;
@@ -695,9 +837,9 @@ section.text.list .count {
 
 section.text .terms a {
     display: inline-block;
-    font-size: 0.85em;
-    padding: 0.1em 0.7em;
-    border-radius: 999px;
+    font-size: 0.75em;
+    padding: 0.1em 0.6em;
+    border-radius: 4px;  /* same as the theorem and proof boxes */
     background: var(--pill-bg);
     text-decoration: none;
 }
