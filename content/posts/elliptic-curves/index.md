@@ -8,9 +8,9 @@ tags = ['math', 'algebraic geometry', 'cryptography']
 
 *This post is adapted from the paper I wrote for the 2024 University of Chicago Math REU. The original PDF is [available here](http://math.uchicago.edu/~may/REU2024/REUPapers/Padmanabhan.pdf).*
 
-Mathematicians and computer scientists have likely encountered the topic of elliptic curves in their work and research. This expository article, directed to those unfamiliar with the topic, serves as a gently guided tour of the subject of elliptic curves.
-
 <!--more-->
+
+Mathematicians and computer scientists have likely encountered the topic of elliptic curves in their work and research. This expository article, directed to those unfamiliar with the topic, serves as a gently guided tour of the subject of elliptic curves.
 
 An easily digestible definition of elliptic curves is the following:
 

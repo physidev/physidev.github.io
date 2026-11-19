@@ -222,7 +222,9 @@ textarea {
     border: 0;
     padding: 0;
     cursor: pointer;
-    text-decoration: underline dotted;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
 }
 
 #theme-toggle:hover {
@@ -344,6 +346,13 @@ nav #menu-icon {
     line-height: inherit;
 }
 
+/* The menu glyph's ink sits high in its box; nudge it down so its middle lines
+   up with the middle of the site title's capitals (measured: 5.8px at 24px). */
+#menu-icon .material-symbols-outlined {
+    display: inline-block;
+    transform: translateY(0.24em);
+}
+
 @media screen and (orientation: portrait),
 screen and (max-width: 650px) {
     nav:not(.opened) a:not(#home, #menu-icon) {
@@ -396,7 +405,9 @@ section h1 {
 }
 
 section a {
-    text-decoration: underline dotted;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
 }
 
 section a:hover {
@@ -905,7 +916,9 @@ footer {
 
 footer a {
     color: var(--footer-text);
-    text-decoration: underline dotted;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
 }
 
 footer a:hover {

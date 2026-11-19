@@ -8,3 +8,6 @@ resources/
 
 # generated files from local tools/agents (not part of the site)
 output/
+
+# local figure generator scripts (outputs are committed, scripts are not)
+figures-src/
