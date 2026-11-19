@@ -584,6 +584,13 @@ section.text.post :is(img, svg.fig)[style*="--fig-aspect"] {
     width: min(100%, calc(var(--fig-size) * sqrt(var(--fig-aspect))));
 }
 
+/* Hand-drawn figures (*.ink.png): transparent backgrounds, dark ink. In dark
+   mode, invert lightness but keep hues, so black ink turns white and coloured
+   strokes stay the same colour, just lighter. */
+:root:not([data-theme="light"]) section.text.post img.fig-ink {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 /* Inline SVG figures (see the image render hook). They have no background
    and draw with these classes, so they follow the light/dark theme. */
 svg.fig {

@@ -7,7 +7,8 @@ Markdown image render hook.
   The SVG gets class "fig", an accessible label from the alt text, and its
   aspect ratio (from the viewBox) as --fig-aspect.
 - Other images in the page bundle pass their aspect ratio (width / height) to
-  CSS as --fig-aspect.
+  CSS as --fig-aspect. Files named *.ink.* are line drawings on a transparent
+  background; they get class "fig-ink" so dark mode can flip their ink.
 
 Either way, --fig-aspect lets the stylesheet size every figure to the same
 area instead of stretching each one to the full column width. See the
@@ -30,13 +31,16 @@ area instead of stretching each one to the full column width. See the
 {{- else -}}
   {{- $src := .Destination | safeURL -}}
   {{- $style := "" -}}
+  {{- $class := "" -}}
   {{- with $res -}}
     {{- $src = .RelPermalink -}}
+    {{- if strings.Contains .Name ".ink." }}{{ $class = "fig-ink" }}{{ end -}}
     {{- if eq .MediaType.MainType "image" -}}
       {{- $style = printf "--fig-aspect: %.4f" (div (float .Width) .Height) -}}
     {{- end -}}
   {{- end -}}
   <img src="{{ $src }}" alt="{{ .PlainText }}"
+    {{- with $class }} class="{{ . }}"{{ end }}
     {{- with .Title }} title="{{ . }}"{{ end }}
     {{- with $style }} style="{{ . | safeCSS }}"{{ end }}>
 {{- end -}}
