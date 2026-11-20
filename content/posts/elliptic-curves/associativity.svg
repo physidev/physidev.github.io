@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304 332">
+<g class="fig9-build">
+<line class="line blue fig9-line0" x1="80" y1="54" x2="80" y2="54"/>
+<path class="arrow-head blue fig9-head0" d="M294,54 L285.6,49.1 L285.6,58.9 Z"/>
+<line class="line green fig9-line1" x1="80" y1="54" x2="80" y2="54"/>
+<path class="arrow-head green fig9-head1" d="M80,268 L75.1,259.6 L84.9,259.6 Z"/>
+<line class="line blue fig9-line2" x1="270" y1="54" x2="270" y2="54"/>
+<path class="arrow-head blue fig9-head2" d="M270,268 L265.1,259.6 L274.9,259.6 Z"/>
+<line class="line green fig9-line3" x1="80" y1="244" x2="80" y2="244"/>
+<path class="arrow-head green fig9-head3" d="M294,244 L285.6,239.1 L285.6,248.9 Z"/>
+<line class="line blue fig9-line4" x1="80" y1="149" x2="80" y2="149"/>
+<path class="arrow-head blue fig9-head4" d="M294,149 L285.6,144.1 L285.6,153.9 Z"/>
+<line class="line green fig9-line5" x1="175" y1="54" x2="175" y2="54"/>
+<path class="arrow-head green fig9-head5" d="M175,268 L170.1,259.6 L179.9,259.6 Z"/>
+<circle class="dot red fig9-pt-Q" cx="80" cy="54" r="0"/>
+<foreignObject class="fig9-lab-Q" x="-46" y="14" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(Q\)</div></foreignObject>
+<circle class="dot red fig9-pt-R" cx="175" cy="54" r="0"/>
+<foreignObject class="fig9-lab-R" x="49" y="14" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(R\)</div></foreignObject>
+<circle class="dot red fig9-pt-nQR" cx="270" cy="54" r="0"/>
+<foreignObject class="fig9-lab-nQR" x="144" y="14" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(\ominus(Q \oplus R)\)</div></foreignObject>
+<circle class="dot red fig9-pt-P" cx="80" cy="149" r="0"/>
+<foreignObject class="fig9-lab-P" x="-46" y="109" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(P\)</div></foreignObject>
+<circle class="dot orange fig9-pt-S" cx="175" cy="149" r="0"/>
+<foreignObject class="fig9-lab-S" x="49" y="109" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(S\)</div></foreignObject>
+<circle class="dot red fig9-pt-QR" cx="270" cy="149" r="0"/>
+<foreignObject class="fig9-lab-QR" x="144" y="109" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(Q \oplus R\)</div></foreignObject>
+<circle class="dot red fig9-pt-nPQ" cx="80" cy="244" r="0"/>
+<foreignObject class="fig9-lab-nPQ" x="-46" y="204" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(\ominus(P \oplus Q)\)</div></foreignObject>
+<circle class="dot red fig9-pt-PQ" cx="175" cy="244" r="0"/>
+<foreignObject class="fig9-lab-PQ" x="49" y="204" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(P \oplus Q\)</div></foreignObject>
+<circle class="dot red fig9-pt-O" cx="270" cy="244" r="0"/>
+<foreignObject class="fig9-lab-O" x="144" y="204" width="120" height="36" style="opacity: 0"><div xmlns="http://www.w3.org/1999/xhtml" class="fig-eq fig-eq-ink fig9-eq" style="text-align: right">\(O\)</div></foreignObject>
+<text class="label fig9-step" x="6" y="20"></text>
+</g>
+<g class="fig-btn fig9-btn" role="button" tabindex="0" aria-label="Pause animation" transform="translate(66,312)"><rect class="fig-btn-bg" x="-11" y="-11" width="22" height="22" rx="4"/><path class="fig-btn-icon fig9-pause" d="M-3.5,-4.5 v9 M3.5,-4.5 v9"/><path class="fig-btn-icon fig9-play" d="M-2.5,-5 L5,0 L-2.5,5 Z" visibility="hidden"/></g>
+<rect class="fig-track" x="95" y="310.5" width="148" height="3" rx="1.5"/>
+<rect class="fig-track-fill fig9-fill" x="95" y="310.5" width="0" height="3" rx="1.5"/>
+<rect class="fig-knob fig9-knob" x="89" y="304" width="12" height="16" rx="3" tabindex="0" role="slider" aria-label="Step through parts (a), (b) and (c)" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"/>
+<rect class="fig9-hit" x="85" y="298" width="168" height="28" fill="transparent"/>
+<script><![CDATA[
+(function () {
+  var svg = document.currentScript.closest('svg');
+  var q = function (c) { return svg.querySelector('.' + c); };
+  var BUILD = q('fig9-build'), STEP = q('fig9-step'),
+      FILL = q('fig9-fill'), KNOB = q('fig9-knob'), HIT = q('fig9-hit'),
+      BTN = q('fig9-btn'), PLAY = q('fig9-play'), PAUSE = q('fig9-pause');
+  var LINES = [{"x": 80, "y": 54, "ex": 287.28, "ey": 54, "s0": 0.05, "s1": 0.17, "reveal": [["nQR", 190]]}, {"x": 80, "y": 54, "ex": 80, "ey": 261.28, "s0": 0.17, "s1": 0.29, "reveal": [["nPQ", 190]]}, {"x": 270, "y": 54, "ex": 270, "ey": 261.28, "s0": 0.38, "s1": 0.52, "reveal": [["QR", 95], ["O", 190]]}, {"x": 80, "y": 244, "ex": 287.28, "ey": 244, "s0": 0.52, "s1": 0.66, "reveal": [["PQ", 95]]}, {"x": 80, "y": 149, "ex": 287.28, "ey": 149, "s0": 0.74, "s1": 0.96, "reveal": []}, {"x": 175, "y": 54, "ex": 175, "ey": 261.28, "s0": 0.74, "s1": 0.96, "reveal": [["S", 95]]}], NAMES = ["Q", "R", "nQR", "P", "S", "QR", "nPQ", "PQ", "O"], GIVEN = ["Q", "R", "P"];
+  var TX0 = 95, TX1 = 243;
+
+  var clamp = function (v) { return Math.min(1, Math.max(0, v)); };
+  var ease = function (v) { v = clamp(v); return 0.5 - 0.5 * Math.cos(Math.PI * v); };
+  function point(k, on) {                    // on in [0, 1]: dot radius and label
+    q('fig9-pt-' + k).setAttribute('r', 5 * on);
+    q('fig9-lab-' + k).style.opacity = on > 0.5 ? 1 : 0;
+  }
+
+  var STEPS = ['(a)', '(b)', '(c)'];
+  var TEXT = ['(a): Q, R and minus (Q plus R) are collinear, as are P, Q and minus (P plus Q)',
+              '(b): the lines through O add Q plus R and P plus Q, making eight points',
+              '(c): the lines through P and Q plus R, and through P plus Q and R, meet at the ninth point S'];
+  var s = 0;
+  function draw() {
+    var kx = TX0 + (TX1 - TX0) * s;
+    KNOB.setAttribute('x', kx - 6); FILL.setAttribute('width', kx - TX0);
+    KNOB.setAttribute('aria-valuenow', Math.round(s * 100));
+    var step = s < 0.33 ? 0 : s < 0.70 ? 1 : 2;
+    STEP.textContent = STEPS[step];
+    KNOB.setAttribute('aria-valuetext', TEXT[step]);
+
+    var on = {};
+    NAMES.forEach(function (k) { on[k] = 0; });
+    var g = ease(s / 0.04);
+    GIVEN.forEach(function (k) { on[k] = g; });
+    LINES.forEach(function (ln, i) {
+      var k = ease((s - ln.s0) / (ln.s1 - ln.s0));
+      var el = q('fig9-line' + i), head = q('fig9-head' + i);
+      el.setAttribute('x2', ln.x + (ln.ex - ln.x) * k);
+      el.setAttribute('y2', ln.y + (ln.ey - ln.y) * k);
+      el.setAttribute('visibility', k > 0 ? 'visible' : 'hidden');
+      head.style.opacity = clamp((k - 0.9) / 0.1);
+      var done = (Math.abs(ln.ex - ln.x) + Math.abs(ln.ey - ln.y)) * k;   // length drawn so far
+      ln.reveal.forEach(function (r) { on[r[0]] = Math.max(on[r[0]], clamp((done - r[1]) / 14)); });
+    });
+    NAMES.forEach(function (k) { point(k, on[k]); });
+  }
+
+  // Playback: build each part, pausing after (a) and (b), hold the finished
+  // picture, fade out, stay blank long enough for the label fades to finish
+  // (so nothing flashes), start again.
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var RATE = 9000;                                     // ms per unit of s
+  var PLAN = [[0, 0.30], 1200, [0.30, 0.67], 1200, [0.67, 1], 2500];
+  var FADE = 700, BLANK = 600;
+  var segs = [], T = 0;
+  PLAN.forEach(function (g) {
+    var d = typeof g === 'number' ? g : (g[1] - g[0]) * RATE;
+    segs.push({ t0: T, d: d, g: g }); T += d;
+  });
+  var BUILT = T; T += FADE + BLANK;
+  function at(t) {                                     // time in the cycle -> [s, opacity]
+    if (t >= BUILT) {
+      var u = t - BUILT;
+      return u < FADE ? [1, 1 - u / FADE] : [0, 0];
+    }
+    for (var i = 0; i < segs.length; i++) {
+      var g = segs[i];
+      if (t < g.t0 + g.d) {
+        if (typeof g.g === 'number') return [segs[i - 1].g[1], 1];
+        return [g.g[0] + (g.g[1] - g.g[0]) * (t - g.t0) / g.d, 1];
+      }
+    }
+    return [1, 1];
+  }
+  function timeOf(v) {                                 // first time in the cycle at which s = v
+    if (v >= 1) return 0;                              // finished: start over
+    for (var i = 0; i < segs.length; i++) {
+      var g = segs[i].g;
+      if (typeof g !== 'number' && v <= g[1]) return segs[i].t0 + (v - g[0]) * RATE;
+    }
+    return 0;
+  }
+  var playing = false, visible = true, start = null;
+  function frame(ts) {
+    if (!playing) return;
+    if (visible) {
+      if (start === null) start = ts - timeOf(s);
+      var r = at((ts - start) % T);
+      s = r[0]; BUILD.style.opacity = r[1];
+      draw();
+    } else {
+      start = null;
+    }
+    requestAnimationFrame(frame);
+  }
+  function setPlaying(on) {
+    playing = on;
+    PLAY.setAttribute('visibility', on ? 'hidden' : 'visible');
+    PAUSE.setAttribute('visibility', on ? 'visible' : 'hidden');
+    BTN.setAttribute('aria-label', on ? 'Pause animation' : 'Play animation');
+    if (on) { start = null; requestAnimationFrame(frame); }
+    else BUILD.style.opacity = 1;
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(svg);
+  }
+  function stop() { if (playing) setPlaying(false); }
+  BTN.style.cursor = 'pointer';
+  BTN.addEventListener('click', function () { setPlaying(!playing); });
+  BTN.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter' || ev.key === ' ') { setPlaying(!playing); ev.preventDefault(); }
+  });
+
+  function setFromEvent(ev) {
+    var pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    var x = pt.matrixTransform(svg.getScreenCTM().inverse()).x;
+    s = clamp((x - TX0) / (TX1 - TX0));
+    draw();
+  }
+  var dragging = false;
+  [KNOB, HIT].forEach(function (el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('pointerdown', function (ev) {
+      stop(); dragging = true; el.setPointerCapture(ev.pointerId); setFromEvent(ev); ev.preventDefault();
+    });
+    el.addEventListener('pointermove', function (ev) { if (dragging) setFromEvent(ev); });
+    el.addEventListener('pointerup', function () { dragging = false; });
+  });
+  KNOB.addEventListener('keydown', function (ev) {
+    var d = { ArrowRight: 0.05, ArrowUp: 0.05, ArrowLeft: -0.05, ArrowDown: -0.05 }[ev.key];
+    if (ev.key === 'Home') d = -1; if (ev.key === 'End') d = 1;
+    if (d === undefined) return;
+    stop(); s = clamp(s + d); draw(); ev.preventDefault();
+  });
+  s = reduce ? 1 : 0;
+  draw();
+  setPlaying(!reduce);
+})();
+]]></script>
+</svg>

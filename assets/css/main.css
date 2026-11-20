@@ -624,6 +624,8 @@ svg.fig text {
 svg.fig .grid   { stroke: var(--fig-grid); stroke-width: 1; fill: none; }
 svg.fig .axis   { stroke: var(--fig-axis); stroke-width: 1.6; fill: none; }
 svg.fig .axis-head { fill: var(--fig-axis); stroke: none; }
+svg.fig .arrow-head.blue  { fill: var(--fig-blue); stroke: none; }
+svg.fig .arrow-head.green { fill: var(--fig-green); stroke: none; }
 svg.fig .tick   { fill: var(--fig-muted); font-size: 15px; }
 svg.fig .label  { fill: var(--fig-ink); }
 svg.fig .math   { fill: var(--fig-ink); font-style: italic; }
@@ -657,6 +659,8 @@ svg.fig .sheet       { fill: var(--fig-red); fill-opacity: 0.12; stroke: none; }
 svg.fig .fig-eq      { color: var(--fig-purple); font-size: 18px; line-height: 36px; white-space: nowrap; text-align: left; }
 svg.fig foreignObject { transition: opacity 0.3s; }
 svg.fig .fig-eq-ink    { color: var(--fig-ink); }
+svg.fig .fig-eq-red    { color: var(--fig-red); }
+svg.fig .fig-eq-blue   { color: var(--fig-blue); }
 svg.fig .fig-eq-center { text-align: center; line-height: 30px; }
 
 svg.fig .on-plane    { stroke-width: 2; }
@@ -672,7 +676,7 @@ svg.fig .fig-btn:hover .fig-btn-bg { stroke: var(--fig-muted); }
 /* Controls stay quieter than the caption text: muted grey, never the full text colour. */
 svg.fig :is(.fig-btn, .fig-knob):focus { outline: none; }  /* keyboard focus is shown by the stroke rules */
 svg.fig .fig-btn:focus-visible .fig-btn-bg { stroke: var(--fig-blue); stroke-width: 3; }
-svg.fig :is([class*="fig3-"], [class*="fig4-"]) { touch-action: none; }
+svg.fig :is([class*="fig3-"], [class*="fig4-"], [class*="fig8-"], [class*="fig9-"]) { touch-action: none; }
 
 /* THEOREM / PROOF ENVIRONMENTS */
 

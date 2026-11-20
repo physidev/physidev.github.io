@@ -368,7 +368,7 @@ Let \(E\) be an elliptic curve over \(K\), with base point \(O\). Further suppos
 2. Since \(E\) is given by a degree-three equation and \(L\) has degree one, Bezout's theorem tells us \(L \cap E\) must contain, with multiplicity, exactly three points: \(P\), \(Q\), and a third point, which we denote \(R\).
 3. Now, draw a line \(L'\) through \(O\) and \(R\). Again by Bezout's theorem, \(L' \cap E\) must contain \(O\), \(R\), and a third point \(R'\). Define \(P \oplus Q\) to be \(R'\).
 
-![The geometric group law](group-law.ink.png)
+![The geometric group law](group-law.svg)
 **Figure 8.** *The geometric group law, illustrated.*
 
 With the operation \(\oplus\) so defined, it remains to show it makes \(E\) an abelian group.
@@ -419,7 +419,7 @@ as does \(E\), by definition of \(\oplus\). Additionally, the curves \(C_1\) and
 \[ S = L(P, Q \oplus R) \cap L(P \oplus Q, R), \]
 as shown in Figure 9(c).
 
-![The points and lines for the proof of associativity](associativity.ink.png)
+![The points and lines for the proof of associativity](associativity.svg)
 **Figure 9.** *The relevant points and lines for the proof of associativity of the geometric group law.*
 
 Thus, if the nine points are distinct, we can apply Theorem 2.3 to \(E\), which goes through eight of them—so we know \(S \in E\). Now, observe \(S\) is the third point in \(E \cap L(P, Q \oplus R)\), so we know
@@ -561,7 +561,7 @@ We have
 for some \(r \geq 0\). The quantity \(r\) is called the *rank* of the elliptic curve \(E\).
 {{< /theorem >}}
 
-![An elliptic curve E and the powers of a point P](point-powers.ink.png)
+![An elliptic curve E and the powers of a point P](point-powers.svg)
 **Figure 10.** *An elliptic curve \(E\), and the powers of a point \(P \in E\).*
 
 Continuing on, Corollary 2.12 gives us two avenues for characterizing \(E(\mathbb{Q})\): its torsion and its rank. Of the two, arithmetic geometers have characterized the torsion subgroup \(E(\mathbb{Q})_{\text{tors}}\) to a much greater degree. Two important results in this direction are a theorem of Nagell and Lutz and a theorem of Mazur. The latter of these greatly limits the possibilities for \(E(\mathbb{Q})_{\text{tors}}\).
