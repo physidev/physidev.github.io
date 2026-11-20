@@ -894,7 +894,21 @@ section.text.list .title-date {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    gap: 1em;
     width: 100%;
+}
+
+section.text.list .title-date time {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* On narrow screens the date would squeeze the title, so put it underneath. */
+@media screen and (max-width: 650px) {
+    section.text.list .title-date {
+        flex-direction: column;
+        gap: 0.15em;
+    }
 }
 
 /* FOOTER */
