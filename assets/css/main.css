@@ -653,6 +653,7 @@ svg.fig .back-line   { stroke-dasharray: 3 4; opacity: 0.6; }
 svg.fig .chart-plane { fill: var(--fig-blue); fill-opacity: 0.2; stroke: var(--fig-blue); stroke-width: 1.2; stroke-opacity: 0.6; }
 svg.fig .purple      { stroke: var(--fig-purple); }
 svg.fig .chart-patch { fill: var(--fig-blue); fill-opacity: 0.2; stroke: var(--fig-blue); stroke-width: 1; stroke-opacity: 0.5; }
+svg.fig .plane-bg    { fill: var(--fig-muted); fill-opacity: 0.1; stroke: none; }
 svg.fig .plane-grid  { stroke: var(--fig-blue); stroke-width: 0.8; stroke-opacity: 0.35; }
 svg.fig .sheet       { fill: var(--fig-red); fill-opacity: 0.12; stroke: none; }
 /* Equations typeset by MathJax inside a figure (Figure 4's chart labels). */
@@ -676,6 +677,11 @@ svg.fig .fig-btn:hover .fig-btn-bg { stroke: var(--fig-muted); }
 /* Controls stay quieter than the caption text: muted grey, never the full text colour. */
 svg.fig :is(.fig-btn, .fig-knob):focus { outline: none; }  /* keyboard focus is shown by the stroke rules */
 svg.fig .fig-btn:focus-visible .fig-btn-bg { stroke: var(--fig-blue); stroke-width: 3; }
+/* A 3D view the reader can turn by dragging (Figure 4's sphere). */
+svg.fig .fig-orbit          { cursor: grab; }
+svg.fig .fig-orbit.dragging { cursor: grabbing; }
+svg.fig .fig-orbit:focus    { outline: none; }
+svg.fig .fig-orbit:focus-visible { stroke: var(--fig-blue); stroke-width: 2; stroke-dasharray: 4 4; }
 svg.fig :is([class*="fig3-"], [class*="fig4-"], [class*="fig8-"], [class*="fig9-"]) { touch-action: none; }
 
 /* THEOREM / PROOF ENVIRONMENTS */

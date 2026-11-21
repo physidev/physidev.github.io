@@ -138,7 +138,7 @@ and setting \(y = 1\) returns an equation identical in form to the second one. T
 We call \(C\) the *projectivization* of \(C_1\) and \(C_2\). This construction is what allows us to talk about projective varieties defined by polynomial equations that are a priori not homogeneous.
 
 ![The curve C on the unit sphere, and its affine chart as the chart plane turns from z = 1 to y = 1](projective-space.svg)
-**Figure 4.** *Illustration of projective space.*
+**Figure 4.** *Illustration of projective space. Drag the sphere to turn it; shift-drag or use two fingers to pan, and double-click to reset.*
 
 Fundamentally, the takeaway is that projective space is the natural setting for questions about algebraic curves, surfaces, and varieties.
 
