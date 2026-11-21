@@ -133,12 +133,12 @@ One very important takeaway is that we can interpret affine varieties as "pieces
 At first glance, the varieties defined by these equations appear completely unrelated. However, homogenizing the first equation gives us the projective curve
 \[ C : y^2 z = x^3 - 3xz^2, \]
 and setting \(y = 1\) returns an equation identical in form to the second one. Thus, we can say that \(C_1, C_2 \subseteq \mathbb{A}^2\) are affine pieces of a single projective variety \(C \subseteq \mathbb{P}^2\), obtained by setting \(z = 1\) and \(y = 1\) respectively. Figure 4 gives a geometric interpretation of this fact.
-{{< /theorem >}}
 
 We call \(C\) the *projectivization* of \(C_1\) and \(C_2\). This construction is what allows us to talk about projective varieties defined by polynomial equations that are a priori not homogeneous.
 
 ![The curve C on the unit sphere, and its affine chart as the chart plane turns from z = 1 to y = 1](projective-space.svg)
 **Figure 4.** *Illustration of projective space. Drag the sphere to turn it; shift-drag or use two fingers to pan, and double-click to reset.*
+{{< /theorem >}}
 
 Fundamentally, the takeaway is that projective space is the natural setting for questions about algebraic curves, surfaces, and varieties.
 
