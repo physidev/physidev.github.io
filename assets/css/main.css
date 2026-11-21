@@ -128,7 +128,7 @@ textarea {
     --bold-weight: 770;
     --heading-weight: 660;
 
-    --page-bg: #1d1d1d;    /* L* 11 */
+    --page-bg: #2b2b2b;    /* same as the cards: sections are borderless */
     --card-bg: #2b2b2b;    /* L* 17.5; text on card ~12:1 */
     --card-shadow: #0008;
     --text: #eee;
@@ -143,7 +143,7 @@ textarea {
     --pill-bg: #3e3e3e;
     --pill-hover-bg: #404754;
 
-    --footer-bg: #181818;
+    --footer-bg: #1d1d1d;  /* L* 11 */
     --footer-text: #777;
     --footer-link-hover: #999;
     --footer-shadow: #000;
@@ -177,7 +177,7 @@ textarea {
     --bold-weight: 700;
     --heading-weight: 600;
 
-    --page-bg: #e9eaec;
+    --page-bg: #fdfdfd;    /* same as the cards: sections are borderless */
     --card-bg: #fdfdfd;
     --card-shadow: #0002;
     --text: #1e1e1e;
@@ -192,7 +192,7 @@ textarea {
     --pill-bg: #ebecee;
     --pill-hover-bg: #dfe6f4;
 
-    --footer-bg: #dfe0e3;
+    --footer-bg: #e9eaec;
     --footer-text: #6b6b6b;
     --footer-link-hover: #333;
     --footer-shadow: #0003;
@@ -392,8 +392,7 @@ section#landing,
 section.text {
     margin-top: 20px;
     margin: 0;
-    padding: 20px; 
-    box-shadow: 0px 2px 4px var(--card-shadow);
+    padding: 20px;
 }
 
 section, section a {
