@@ -89,7 +89,10 @@
   // (so nothing flashes), start again.
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var RATE = 9000;                                     // ms per unit of s
-  var PLAN = [[0, 0.30], 1200, [0.30, 0.67], 1200, [0.67, 1], 2500];
+  // Every key view holds still for at least HOLD ms (2 s, for diagrams this intricate;
+  // see lesswrong.com/posts/ZiCvwLKreShtXuyiB); the finished figure gets longer.
+  var HOLD = 2000;
+  var PLAN = [[0, 0.30], HOLD, [0.30, 0.67], HOLD, [0.67, 1], HOLD + 1000];
   var FADE = 700, BLANK = 600;
   var segs = [], T = 0;
   PLAN.forEach(function (g) {

@@ -86,12 +86,14 @@
   // Animation: sweep out to infinity and back. Starts playing unless the
   // reader prefers reduced motion; the button and the slider pause it.
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var T = 9000, playing = false, visible = true, start = null;
-  function phaseAt(t) {                              // t in [0, 1) -> s
+  // Timing: every key view holds still for HOLD ms (2 s, for diagrams this
+  // intricate; see lesswrong.com/posts/ZiCvwLKreShtXuyiB), moves take MOVE ms.
+  var MOVE = 3600, HOLD = 2000, T = 2 * (MOVE + HOLD), playing = false, visible = true, start = null;
+  function phaseAt(t) {                              // t in ms, [0, T) -> s
     var e;
-    if (t < 0.40) e = t / 0.40;                      // out
-    else if (t < 0.55) e = 1;                        // hold at infinity
-    else if (t < 0.95) e = 1 - (t - 0.55) / 0.40;    // back
+    if (t < MOVE) e = t / MOVE;                      // out
+    else if (t < MOVE + HOLD) e = 1;                 // hold at infinity
+    else if (t < 2 * MOVE + HOLD) e = 1 - (t - MOVE - HOLD) / MOVE;   // back
     else e = 0;                                      // hold at (1, 1)
     return 0.5 - 0.5 * Math.cos(Math.PI * e);        // ease
   }
@@ -101,9 +103,9 @@
       if (start === null) {
         // resume from the current position, heading outward
         var e = Math.acos(1 - 2 * s) / Math.PI;
-        start = ts - e * 0.40 * T;
+        start = ts - e * MOVE;
       }
-      s = phaseAt(((ts - start) % T) / T);
+      s = phaseAt((ts - start) % T);
       draw();
     } else {
       start = null;

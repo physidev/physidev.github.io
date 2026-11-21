@@ -110,7 +110,10 @@
   // the labels' fade transitions to finish, so nothing flashes), start again.
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var RATE = 8640;                                     // ms per unit of s
-  var PLAN = [[0, 0.36], 1000, [0.36, 0.44], 1000, [0.44, 1], 2500];
+  // Every key view holds still for at least HOLD ms (2 s, for diagrams this intricate;
+  // see lesswrong.com/posts/ZiCvwLKreShtXuyiB); the finished figure gets longer.
+  var HOLD = 2000;
+  var PLAN = [[0, 0.36], HOLD, [0.36, 0.44], HOLD, [0.44, 1], HOLD + 1000];
   var FADE = 700, BLANK = 600;
   var segs = [], T = 0;
   PLAN.forEach(function (g) {
